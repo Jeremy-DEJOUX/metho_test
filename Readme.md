@@ -1,39 +1,39 @@
 
-# Validation and Verification Document
+# Document de Validation et Vérification
 
 ## 1. Introduction
-This document outlines the Validation and Verification (V&V) process for the automated test bench implemented via a Bash script. The test bench is designed to validate a specific algorithm according to provided business rules.
+Ce document décrit le processus de Validation et Vérification (V&V) pour un banc de test automatisé, implémenté via un script Bash. Ce banc de test est conçu pour valider un algorithme spécifique selon les règles d'affaires fournies.
 
-## 2. Environment Setup
-**Script:** `setup_environment.sh`
-- **Objective:** Prepare the test environment by installing necessary dependencies, including Python, and configuring settings specific to the OS.
-- **Execution:** Automatically initiated by the main script `run_test.sh`. It detects the OS and installs Python if not already present.
+## 2. Configuration de l'Environnement
+**Script :** `setup_environment.sh`
+- **Objectif :** Préparer l'environnement de test en installant les dépendances nécessaires, notamment Python, et en configurant les paramètres spécifiques à l'OS.
+- **Exécution :** Automatiquement lancé par le script principal `run_test.sh`. Il détecte l'OS et installe Python si ce n'est pas déjà fait.
 
-## 3. Test Execution
-**Script:** `run_test.sh`
-- **Location:** Located in the `script` folder.
-- **Operation:**
-  1. **Setup:** Initializes the environment by running `setup_environment.sh`.
-  2. **Tests:** Iterates through all test directories under `../tests/` and executes the script `run_test.sh` in each subdirectory.
-  3. **Error Logging:** Redirects errors to `../results/error.log`.
-  4. **Cleanup:** Runs `cleanup_environment.sh` to reset the environment post-testing.
+## 3. Exécution des Tests
+**Script :** `run_test.sh`
+- **Emplacement :** Se trouve dans le dossier `script`.
+- **Fonctionnement :**
+  1. **Setup :** Initialise l'environnement en exécutant `setup_environment.sh`.
+  2. **Tests :** Parcourt tous les dossiers de test sous `../tests/` et exécute le script `run_test.sh` dans chaque sous-dossier.
+  3. **Log des erreurs :** Redirige les erreurs dans `../results/error.log`.
+  4. **Nettoyage :** Exécute `cleanup_environment.sh` pour réinitialiser l'environnement après les tests.
 
-## 4. Result Management
-- **Results Folder:** `../results/`
-  - **Output Files:** The results of each test are saved in the format `output_<test_directory_name>.csv`.
-  - **Test Summary:** A `results_summary.txt` file is updated for each test indicating whether the test passed or failed.
-  - **Differences:** For failed tests, differences are recorded in `diff_<test_directory_name>.txt`.
+## 4. Gestion des Résultats
+- **Dossier de résultats :** `../results/`
+  - **Fichiers de sortie :** Les résultats de chaque test sont sauvegardés sous la forme `output_<nom_du_dossier_de_test>.csv`.
+  - **Résumé des tests :** Un fichier `results_summary.txt` est mis à jour pour chaque test, indiquant si le test a été réussi ou échoué.
+  - **Différences :** Pour les tests échoués, les différences sont enregistrées dans `diff_<nom_du_dossier_de_test>.txt`.
 
-## 5. Evaluation Criteria
-- **Test Validity:** Tests are deemed valid if the complete process is executed without errors and the output files match expected results.
-- **Automation:** The testing process is fully automated, requiring no manual intervention once the initial script `run_test.sh` is started.
+## 5. Critères d'Évaluation
+- **Validité des Tests :** Les tests sont considérés comme valides si l'exécution complète le processus sans erreurs et si les fichiers de sortie correspondent aux résultats attendus.
+- **Automatisation :** Le processus de test est entièrement automatisé, nécessitant aucune intervention manuelle après le lancement initial du script `run_test.sh`.
 
 ## 6. Conclusion
-This test bench provides an automated and reliable evaluation of the algorithm as per the provided specifications. It ensures comprehensive test coverage through automated result verification and detailed error logging.
+Ce banc de test permet une évaluation automatisée et fiable de l'algorithme selon les spécifications fournies. Il assure une couverture de test exhaustive grâce à la vérification automatique des résultats et à la journalisation détaillée des erreurs.
 
-### Usage
-To run the test bench:
-1. Navigate to the `script` folder.
-2. Execute the script with the command: `./run_test.sh`.
+### Usage du Script
+Pour exécuter le banc de test :
+1. Naviguez vers le dossier `script`.
+2. Lancez le script via la commande : `./run_test.sh`.
 
-Ensure all scripts (`setup_environment.sh`, `run_test.sh`, `cleanup_environment.sh`) are executable. You can make them executable using the command: `chmod +x <script_name>.sh`.
+Assurez-vous que tous les scripts (`setup_environment.sh`, `run_test.sh`, `cleanup_environment.sh`) sont exécutables. Vous pouvez les rendre exécutables avec la commande : `chmod +x <nom_du_script>.sh`.
